@@ -33,6 +33,13 @@ def test_set_cell_dead():
     game.set_cell_dead(2, 4)
     assert game.board == resources.EMPTY_BOARD
 
+def test_swap_life_state():
+    game = Game()
+    game.set_cell_alive(2, 4)
+    game.swap_life_state(2, 4)
+    assert game.board == resources.EMPTY_BOARD
+    game.swap_life_state(2, 4)
+    assert game.board == resources.BOARD_WITH_ROW_2_COLUMN_4_ALIVE
 
 def test_count_neighbors():
     game = Game()

@@ -21,6 +21,12 @@ class Game:
             s += '\n'
         return s
 
+    def swap_life_state(self, row, column):
+        if self.is_alive(row, column):
+            self.board[row][column] = 0
+        else:
+            self.board[row][column] = 1
+
     def set_cell_alive(self, row, column):
         self.board[row][column] = 1
 
@@ -55,4 +61,7 @@ class Game:
                         pass  # act as if cells beyond the boundary are dead
                         # todo just for fun, try it later as if all cells beyond the boundary are alive
         return count
+
+    def is_alive(self, row, column):
+        return bool(self.board[row][column])
 
