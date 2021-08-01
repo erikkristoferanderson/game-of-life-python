@@ -1,6 +1,7 @@
 import logging
 import copy
 
+
 class Game:
     """defines an instance of the game of life"""
 

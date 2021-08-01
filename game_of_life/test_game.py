@@ -1,5 +1,5 @@
 # import pytest
-from game import Game
+from mygamefile import Game
 import resources
 
 
