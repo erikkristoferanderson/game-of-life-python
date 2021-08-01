@@ -1,10 +1,6 @@
 import logging
 import copy
 
-logging.basicConfig(filename='foo.log', level=logging.DEBUG)
-logging.debug("hello")
-
-
 class Game:
     """defines an instance of the game of life"""
 
@@ -48,18 +44,11 @@ class Game:
 
     def count_neighbors(self, row_num, col_num):
         count = 0
-        logging.warning("hello 82572")
         for row_num_to_check in range(row_num-1, row_num+2):
-            # logging.warning('row_num_to_check: ' + str(row_num_to_check))
             for col_num_to_check in range(col_num-1, col_num+2):
-
-                # logging.warning('col_num_to_check: ' + str(col_num_to_check))
-                # logging.warning('not (row_num_to_check == row_num and col_num_to_check == col_num) ' + str(not (row_num_to_check == row_num and col_num_to_check == col_num)))
                 if not (row_num_to_check == row_num and col_num_to_check == col_num):
-                    logging.warning('checking row_num_to_check ' + str(row_num_to_check) + ' and col_num_to_check ' + str(col_num_to_check))
                     try:
                         if self.board[row_num_to_check][col_num_to_check] == 1:
-                            logging.warning('adding one to the count')
                             count += 1
                     except IndexError:
                         pass  # act as if cells beyond the boundary are dead
