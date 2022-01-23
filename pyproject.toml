@@ -8,6 +8,7 @@ authors = ["Erik Kristofer Anderson <erik.kristofer.anderson@gmail.com>"]
 python = "^3.9"
 pygame = "^2.1.2"
 synthesizer = "^0.2.0"
+PyAudio = "^0.2.11"
 
 [tool.poetry.dev-dependencies]
 

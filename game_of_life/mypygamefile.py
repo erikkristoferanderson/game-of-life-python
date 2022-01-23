@@ -2,13 +2,13 @@ import pygame
 import sys
 from pygame.locals import *
 import mygamefile
-from music import make_music
+from music import make_music, play_a_note
 import resources
 
 pygame.init()
 
-FPS = 1
-generation_frames = 2
+FPS = 6
+generation_frames = 3
 FramePerSec = pygame.time.Clock()
 input_wait_time = 1
 
@@ -33,6 +33,7 @@ def main():
     paused = True
     play_a_song = False
     game = mygamefile.Game()
+    prev_board = game.board
     # game.board = resources.BOARD_WITH_BLINKER_A
     while True:
         generation_counter += 1
@@ -56,6 +57,7 @@ def main():
                 paused = not paused
             if pressed_keys[K_RETURN]:
                 game.swap_life_state(cursor_y, cursor_x)
+                play_a_note(cursor_x)
         if wait_for_input > 0:
             wait_for_input -= 1
         DISPLAYSURF.fill(BLACK)
@@ -82,9 +84,10 @@ def main():
         pygame.draw.rect(DISPLAYSURF, GREEN, (cursor_x*10, cursor_y*10, 10, 10), 2)
         pygame.display.update()
         if play_a_song:
-            make_music(game)
+            make_music(game, prev_board)
             play_a_song = False
         FramePerSec.tick(FPS)
+        prev_board = game.board
 
 
 if __name__ == "__main__":
